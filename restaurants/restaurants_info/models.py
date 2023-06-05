@@ -1,5 +1,5 @@
 from django.db import models
-
+import django
 # Create your models here.
 
 class storestatus(models.Model):
@@ -16,3 +16,12 @@ class MenuHours(models.Model):
     week_day = models.IntegerField()
     start_time = models.TimeField()
     end_time = models.TimeField()
+
+
+class Report(models.Model):
+    report_id = models.CharField(primary_key=True, max_length=16)
+    status = models.CharField(max_length=50)
+    data = models.TextField(null=False)
+    created_at = models.DateTimeField(default=django.utils.timezone.now)
+    completed_at = models.DateTimeField(null=True)
+
